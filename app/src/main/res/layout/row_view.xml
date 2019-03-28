@@ -12,9 +12,10 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="2dp"
         card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="7dp"
-        card_view:cardMaxElevation="7dp"
-        card_view:contentPadding="7dp"
+        android:outlineSpotShadowColor="@android:color/darker_gray"
+        card_view:cardElevation="5dp"
+        card_view:cardMaxElevation="5dp"
+        card_view:contentPadding="5dp"
         card_view:layout_constraintEnd_toEndOf="parent"
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintTop_toTopOf="parent">
@@ -25,7 +26,7 @@
             android:clickable="true"
             android:focusable="true"
             android:orientation="horizontal"
-            android:padding="15dp">
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/imageView"
