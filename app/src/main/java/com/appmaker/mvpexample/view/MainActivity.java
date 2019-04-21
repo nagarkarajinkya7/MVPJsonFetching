@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.appmaker.mvpexample.R;
@@ -24,8 +23,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     private ProgressDialog mProgressDialog;
     private MainViewAdapter mainViewAdapter;
     private RecyclerView mRecyclerView;
-    private Button mButton;
-    private TextView tv_message;
+    private Button btClick;
+    private TextView tvMessage;
 
 
     @Override
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @Override
     public void initView() {
-        tv_message = findViewById(R.id.tv_message);
+        tvMessage = findViewById(R.id.tv_message);
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage("Loading please wait...");
         mProgressDialog.setCancelable(false);
@@ -47,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mRecyclerView = findViewById(R.id.rv);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mButton = findViewById(R.id.bt_fetch);
-        mButton.setOnClickListener(new View.OnClickListener() {
+        btClick = findViewById(R.id.bt_fetch);
+        btClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -65,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
         try {
             if (mProgressDialog != null) {
-                tv_message.setVisibility(View.GONE);
+                tvMessage.setVisibility(View.GONE);
                 mProgressDialog.show();
             }
         } catch (Exception e) {
@@ -91,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         try {
             mainViewAdapter = new MainViewAdapter(this, model);
             mRecyclerView.setVisibility(View.VISIBLE);
-            mButton.setVisibility(View.GONE);
+            btClick.setVisibility(View.GONE);
             mRecyclerView.setAdapter(mainViewAdapter);
         } catch (Exception e) {
             e.printStackTrace();

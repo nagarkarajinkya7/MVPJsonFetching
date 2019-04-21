@@ -1,9 +1,7 @@
 package com.appmaker.mvpexample.view;
 
-import android.animation.LayoutTransition;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,14 +40,14 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
 
         MainViewDataModel currentData = model.get(i);
 
-        viewHolder.tv_name.setText(currentData.getName());
-        viewHolder.tv_country.setText(currentData.getCountry());
-        viewHolder.tv_city.setText(currentData.getCity());
+        viewHolder.tvName.setText(currentData.getName());
+        viewHolder.tvCountry.setText(currentData.getCountry());
+        viewHolder.tvCity.setText(currentData.getCity());
 
         Glide.with(mContext).load(currentData.getImageUrl())
                 .placeholder(R.mipmap.ic_launcher_round)
                 .error(R.mipmap.ic_launcher)
-                .into(viewHolder.image_view);
+                .into(viewHolder.iv);
     }
 
     @Override
@@ -59,16 +57,16 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ViewHo
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_name, tv_country, tv_city;
-        ImageView image_view;
+        TextView tvName, tvCountry, tvCity;
+        ImageView iv;
 
         public ViewHolder(View viewItem) {
             super(viewItem);
 
-            tv_name = viewItem.findViewById(R.id.tv_name);
-            tv_country = viewItem.findViewById(R.id.tv_country);
-            tv_city = viewItem.findViewById(R.id.tv_city);
-            image_view = viewItem.findViewById(R.id.imageView);
+            tvName = viewItem.findViewById(R.id.tv_name);
+            tvCountry = viewItem.findViewById(R.id.tv_country);
+            tvCity = viewItem.findViewById(R.id.tv_city);
+            iv = viewItem.findViewById(R.id.imageView);
         }
     }
 }

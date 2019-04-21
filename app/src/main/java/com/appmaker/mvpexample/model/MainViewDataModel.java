@@ -5,12 +5,12 @@ import com.appmaker.mvpexample.contractor.MainActivityContract;
 public class MainViewDataModel implements MainActivityContract.Model {
 
     public final String JSON_URL;
-    private String name, image_url, country, city;
+    private String name, imageUrl, country, city;
 
-    public MainViewDataModel(String name, String image_url, String country, String city) {
+    public MainViewDataModel(String name, String imageUrl, String country, String city) {
 
         this.name = name;
-        this.image_url = image_url;
+        this.imageUrl = imageUrl;
         this.country = country;
         this.city = city;
         JSON_URL = "https://demonuts.com/Demonuts/JsonTest/Tennis/json_parsing.php";
@@ -23,7 +23,7 @@ public class MainViewDataModel implements MainActivityContract.Model {
 
     @Override
     public String getImageUrl() {
-        return image_url;
+        return imageUrl;
     }
 
     @Override
