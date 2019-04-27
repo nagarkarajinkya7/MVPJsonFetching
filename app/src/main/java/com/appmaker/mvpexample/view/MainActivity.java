@@ -16,6 +16,7 @@ import com.appmaker.mvpexample.presenter.MainActivityPresenter;
 
 import java.util.List;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
 
     private MainActivityContract.Presenter mPresenter;

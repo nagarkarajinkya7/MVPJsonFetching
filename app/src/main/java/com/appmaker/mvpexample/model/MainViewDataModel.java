@@ -2,9 +2,10 @@ package com.appmaker.mvpexample.model;
 
 import com.appmaker.mvpexample.contractor.MainActivityContract;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class MainViewDataModel implements MainActivityContract.Model {
 
-    public final String JSON_URL;
+    private final String JSON_URL;
     private String name, imageUrl, country, city;
 
     public MainViewDataModel(String name, String imageUrl, String country, String city) {

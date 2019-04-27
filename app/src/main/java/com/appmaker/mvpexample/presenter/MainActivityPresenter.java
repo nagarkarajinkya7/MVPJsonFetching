@@ -21,12 +21,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class MainActivityPresenter implements Presenter {
 
     private static View mView;
 
     private static List<MainViewDataModel> model;
-    static HttpURLConnection mHttpURLConnection;
+    private static HttpURLConnection mHttpURLConnection;
     private static final int CONNECTION_TIMEOUT = 10000;
     private static final int READ_TIMEOUT = 15000;
 
@@ -95,15 +96,15 @@ public class MainActivityPresenter implements Presenter {
 
                         InputStream inputStream = mHttpURLConnection.getInputStream();
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                        StringBuffer stringBuffer = new StringBuffer();
+                        StringBuilder stringBuilder = new StringBuilder();
                         String line;
 
                         while ((line = bufferedReader.readLine()) != null) {
-                            stringBuffer.append(line);
+                            stringBuilder.append(line);
                         }
                         inputStream.close();
-                        if (stringBuffer.length() > 0) {
-                            return (stringBuffer.toString());
+                        if (stringBuilder.length() > 0) {
+                            return (stringBuilder.toString());
                         } else {
                             return "FAILED";
                         }
