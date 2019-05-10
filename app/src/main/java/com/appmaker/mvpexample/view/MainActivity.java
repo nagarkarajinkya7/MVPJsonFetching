@@ -1,13 +1,20 @@
 package com.appmaker.mvpexample.view;
 
 import android.app.ProgressDialog;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.appmaker.mvpexample.R;
 import com.appmaker.mvpexample.contractor.MainActivityContract;
@@ -25,8 +32,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     private MainViewAdapter mainViewAdapter;
     private RecyclerView mRecyclerView;
     private Button btClick;
-    private TextView tvMessage;
-
+    private TextView tvMessage, tvActionBarTitle;
+    private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mPresenter = new MainActivityPresenter(this);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.nav_bar_button) {
+            Toast.makeText(this, "Cancel action clicked", Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void initView() {
@@ -58,6 +78,22 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                 }
             }
         });
+        actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(false);
+            //actionBar.setTitle("ACTION_BAR");
+            tvActionBarTitle = new TextView(this);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            tvActionBarTitle.setLayoutParams(layoutParams);
+            tvActionBarTitle.setText("ACTION_BAR");
+            tvActionBarTitle.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.AXIS_X_SHIFT);
+            tvActionBarTitle.setTextSize(20);
+            tvActionBarTitle.setTextColor(getResources().getColor(R.color.white));
+            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            actionBar.setCustomView(tvActionBarTitle);
+        }
     }
 
     @Override
